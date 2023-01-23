@@ -9,8 +9,8 @@ class NotificationButton {
     companion object {
         fun notifyText(project: Project, content: String) {
             NotificationGroupManager.getInstance().getNotificationGroup("Hello World Notification")
-                    .createNotification(content, NotificationType.INFORMATION)
-                    .notify(project)
+                .createNotification(content, NotificationType.INFORMATION)
+                .notify(project)
         }
     }
 

@@ -22,17 +22,17 @@
   <actions>
     <action id="FakePlugin.NotificationButton" class="org.sonar.fakeplugin.actions.NotificationButtonAction"
             text="Hello World Notification" description="Display hello world as a notification" icon="AllIcons.General.Note">
-      <add-to-group group-id="ToolbarRunGroup" anchor="first" />
+      <add-to-group group-id="ToolbarRunGroup" anchor="first"/>
     </action>
 
     <action id="FakePlugin.ModalButton" class="org.sonar.fakeplugin.actions.ModalButtonAction"
             text="Hello World Modal" description="Display hello world in a modal" icon="AllIcons.General.Note">
-      <add-to-group group-id="ToolbarRunGroup" anchor="first" />
+      <add-to-group group-id="ToolbarRunGroup" anchor="first"/>
     </action>
   </actions>
   
   <extensions defaultExtensionNs="com.intellij">
-    <notificationGroup displayType="BALLOON" id="Hello World Notification" />
+    <notificationGroup displayType="BALLOON" id="Hello World Notification"/>
   </extensions>
 
 </idea-plugin>

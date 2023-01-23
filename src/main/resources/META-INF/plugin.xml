@@ -5,26 +5,34 @@
 
   <!-- Public plugin name should be written in Title Case.
        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-  <name>Fake-plugin</name>
+  <name>Fake SonarLint</name>
 
   <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-  <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="nicolas.quinquenel@sonarsource.com" url="https://www.sonarsource.com">Sonar</vendor>
 
   <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
        Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-  <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-  ]]></description>
+  <description>Fake plugin made for learning purposes during Sonar onboarding</description>
 
   <!-- Product and plugin compatibility requirements.
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
   <depends>com.intellij.modules.platform</depends>
 
-  <!-- Extension points defined by the plugin.
-       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
-  <extensions defaultExtensionNs="com.intellij">
+  <actions>
+    <action id="FakePlugin.NotificationButton" class="org.sonar.fakeplugin.actions.NotificationButtonAction"
+            text="Hello World Notification" description="Display hello world as a notification" icon="AllIcons.General.Note">
+      <add-to-group group-id="ToolbarRunGroup" anchor="first"/>
+    </action>
 
+    <action id="FakePlugin.ModalButton" class="org.sonar.fakeplugin.actions.ModalButtonAction"
+            text="Hello World Modal" description="Display hello world in a modal" icon="AllIcons.General.Note">
+      <add-to-group group-id="ToolbarRunGroup" anchor="first"/>
+    </action>
+  </actions>
+  
+  <extensions defaultExtensionNs="com.intellij">
+    <notificationGroup displayType="BALLOON" id="Hello World Notification"/>
   </extensions>
+
 </idea-plugin>

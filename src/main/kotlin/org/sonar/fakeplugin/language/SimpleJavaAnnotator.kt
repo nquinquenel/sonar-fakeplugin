@@ -8,10 +8,8 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiImportStatement
 import com.intellij.psi.PsiPackageStatement
-import org.jetbrains.kotlin.psi.KtImportDirective
-import org.jetbrains.kotlin.psi.KtPackageDirective
 
-class SimpleAnnotator : Annotator {
+class SimpleJavaAnnotator : Annotator {
 
     companion object {
         const val WORD_ANNOTATED = "SONAR"
@@ -21,12 +19,12 @@ class SimpleAnnotator : Annotator {
         val value = element.text ?: return
         val textRange = element.textRange
 
-        if (element is KtPackageDirective || element is PsiPackageStatement) {
+        if (element is PsiPackageStatement) {
             holder.newAnnotation(HighlightSeverity.WARNING, "This is a package")
                 .range(textRange)
                 .highlightType(ProblemHighlightType.WEAK_WARNING)
                 .create()
-        } else if (element is KtImportDirective || element is PsiImportStatement) {
+        } else if (element is PsiImportStatement) {
             holder.newAnnotation(HighlightSeverity.INFORMATION, "This is an import")
                 .range(textRange)
                 .highlightType(ProblemHighlightType.GENERIC_ERROR)

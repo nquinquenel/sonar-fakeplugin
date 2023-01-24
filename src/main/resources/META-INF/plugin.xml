@@ -35,7 +35,7 @@
   
   <extensions defaultExtensionNs="com.intellij">
     <notificationGroup displayType="BALLOON" id="Hello World Notification"/>
-    <annotator language="JAVA" implementationClass="org.sonar.fakeplugin.language.SimpleAnnotator"/>
+    <annotator language="JAVA" implementationClass="org.sonar.fakeplugin.language.SimpleJavaAnnotator"/>
   </extensions>
 
 </idea-plugin>

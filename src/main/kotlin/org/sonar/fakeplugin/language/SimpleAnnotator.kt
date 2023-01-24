@@ -6,7 +6,8 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.psi.PsiElement
-import com.intellij.psi.util.elementType
+import org.jetbrains.kotlin.psi.KtImportDirective
+import org.jetbrains.kotlin.psi.KtPackageDirective
 
 class SimpleAnnotator : Annotator {
 
@@ -17,14 +18,13 @@ class SimpleAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         val value = element.text ?: return
         val textRange = element.textRange
-        val elementType = element.elementType.toString()
 
-        if (elementType == "PACKAGE_DIRECTIVE") {
+        if (element is KtPackageDirective) {
             holder.newAnnotation(HighlightSeverity.WARNING, "This is a package")
                 .range(textRange)
                 .highlightType(ProblemHighlightType.WEAK_WARNING)
                 .create()
-        } else if (elementType == "IMPORT_DIRECTIVE") {
+        } else if (element is KtImportDirective) {
             holder.newAnnotation(HighlightSeverity.INFORMATION, "This is an import")
                 .range(textRange)
                 .highlightType(ProblemHighlightType.GENERIC_ERROR)

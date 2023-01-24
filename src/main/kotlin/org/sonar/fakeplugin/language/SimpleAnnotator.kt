@@ -6,6 +6,8 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiImportStatement
+import com.intellij.psi.PsiPackageStatement
 import org.jetbrains.kotlin.psi.KtImportDirective
 import org.jetbrains.kotlin.psi.KtPackageDirective
 
@@ -19,12 +21,12 @@ class SimpleAnnotator : Annotator {
         val value = element.text ?: return
         val textRange = element.textRange
 
-        if (element is KtPackageDirective) {
+        if (element is KtPackageDirective || element is PsiPackageStatement) {
             holder.newAnnotation(HighlightSeverity.WARNING, "This is a package")
                 .range(textRange)
                 .highlightType(ProblemHighlightType.WEAK_WARNING)
                 .create()
-        } else if (element is KtImportDirective) {
+        } else if (element is KtImportDirective || element is PsiImportStatement) {
             holder.newAnnotation(HighlightSeverity.INFORMATION, "This is an import")
                 .range(textRange)
                 .highlightType(ProblemHighlightType.GENERIC_ERROR)

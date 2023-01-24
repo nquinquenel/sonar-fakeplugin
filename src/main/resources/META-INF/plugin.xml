@@ -19,7 +19,7 @@
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.java</depends>
-  <depends>org.jetbrains.kotlin</depends>
+  <depends optional="true" config-file="plugin-withKotlin.xml">org.jetbrains.kotlin</depends>
 
   <actions>
     <action id="FakePlugin.NotificationButton" class="org.sonar.fakeplugin.actions.NotificationButtonAction"
@@ -35,7 +35,7 @@
   
   <extensions defaultExtensionNs="com.intellij">
     <notificationGroup displayType="BALLOON" id="Hello World Notification"/>
-    <annotator language="kotlin" implementationClass="org.sonar.fakeplugin.language.SimpleAnnotator"/>
+    <annotator language="JAVA" implementationClass="org.sonar.fakeplugin.language.SimpleAnnotator"/>
   </extensions>
 
 </idea-plugin>

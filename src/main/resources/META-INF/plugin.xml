@@ -35,7 +35,9 @@
   
   <extensions defaultExtensionNs="com.intellij">
     <notificationGroup displayType="BALLOON" id="Hello World Notification"/>
-    <annotator language="JAVA" implementationClass="org.sonar.fakeplugin.language.SimpleJavaAnnotator"/>
+    <externalAnnotator language="JAVA" implementationClass="org.sonar.fakeplugin.language.ExternalAnnotator"/>
+    <toolWindow factoryClass="org.sonar.fakeplugin.toolWindow.RealTimeToolWindowFactory" id="Real Time Findings"
+      anchor="bottom" icon="AllIcons.Actions.Lightning"/>
   </extensions>
 
 </idea-plugin>

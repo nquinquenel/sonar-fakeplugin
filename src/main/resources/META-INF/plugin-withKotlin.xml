@@ -2,7 +2,7 @@
 <idea-plugin>
   
   <extensions defaultExtensionNs="com.intellij">
-    <annotator language="kotlin" implementationClass="org.sonar.fakeplugin.language.SimpleKotlinAnnotator"/>
+    <externalAnnotator language="kotlin" implementationClass="org.sonar.fakeplugin.language.ExternalAnnotator"/>
   </extensions>
 
 </idea-plugin>

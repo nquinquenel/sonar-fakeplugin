@@ -26,6 +26,22 @@ intellij {
     plugins.set(listOf("java", "Kotlin"))
 }
 
+tasks.test {
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(11))
+        }
+    }
+    useJUnit()
+}
+
+dependencies {
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.assertj:assertj-core:3.23.1")
+    testImplementation("org.mockito:mockito-core:4.8.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+}
+
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {

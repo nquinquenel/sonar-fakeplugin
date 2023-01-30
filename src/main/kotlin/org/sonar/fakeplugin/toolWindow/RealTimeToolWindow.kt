@@ -24,7 +24,7 @@ class RealTimeToolWindow(project: Project) : Disposable {
         busConnection.disconnect()
     }
 
-    fun getContent() : JBPanel<JBPanel<*>> {
+    fun getContent(): JBPanel<JBPanel<*>> {
         return twContent
     }
 

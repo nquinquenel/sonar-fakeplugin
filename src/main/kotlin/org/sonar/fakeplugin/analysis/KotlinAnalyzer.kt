@@ -8,11 +8,10 @@ import org.jetbrains.kotlin.psi.KtElement
 import org.jetbrains.kotlin.psi.KtImportDirective
 import org.jetbrains.kotlin.psi.KtPackageDirective
 
-class KotlinAnalyser {
+class KotlinAnalyzer {
 
     companion object {
         const val ANNOTATED_WORD = "SONAR"
-
         fun parseFile(file: PsiFile): List<AnalyzedElement> {
             val elements = mutableListOf<AnalyzedElement>()
 
@@ -32,7 +31,7 @@ class KotlinAnalyser {
                 file.accept(object : KotlinRecursiveElementVisitor() {
                     override fun visitKtElement(element: KtElement) {
                         super.visitKtElement(element)
-                        element.text?. let {
+                        element.text?.let {
                             if (it == ANNOTATED_WORD) elements.add(AnalyzedElement(element, HighlightSeverity.INFORMATION, "SONAR keyword"))
                         }
                     }

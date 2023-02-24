@@ -1,4 +1,3 @@
-
 package org.sonar.fakeplugin.analysis
 
 import com.intellij.lang.annotation.HighlightSeverity
@@ -33,7 +32,13 @@ class JavaAnalyzer {
                 file.accept(object : JavaRecursiveElementVisitor() {
                     override fun visitLiteralExpression(element: PsiLiteralExpression) {
                         super.visitLiteralExpression(element)
-                        if (element.text == ANNOTATED_WORD) elements.add(AnalyzedElement(element, HighlightSeverity.INFORMATION, "Sonar field"))
+                        if (element.text == ANNOTATED_WORD) elements.add(
+                            AnalyzedElement(
+                                element,
+                                HighlightSeverity.INFORMATION,
+                                "Sonar field"
+                            )
+                        )
                     }
                 })
             }
